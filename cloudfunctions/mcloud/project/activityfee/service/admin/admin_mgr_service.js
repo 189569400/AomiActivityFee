@@ -200,12 +200,12 @@ class AdminMgrService extends BaseProjectAdminService {
 	}
 
 	/** 修改自身密码 */
-	async pwdtMgr(adminId, oldPwd, NewPwd) {
+	async pwdtMgr(adminId, oldPwd, newPwd) {
         //this.AppError('[报名缴费]该功能暂不开放，如有需要请加作者微信：cclinux0730');
         // 数据校验
         if (!adminId) 
             this.AppError('管理员id不能为空');
-        if (!oldPwd || !NewPwd) 
+        if (!oldPwd || !newPwd) 
             this.AppError('密码不能为空');
         if (newPwd.length < 6) 
             this.AppError('新密码不能少于6位');

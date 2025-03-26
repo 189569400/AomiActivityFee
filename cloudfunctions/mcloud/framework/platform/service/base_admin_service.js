@@ -62,6 +62,7 @@ class BaseAdminService extends BaseService {
     async getAdminInfo() {
         let token = util.getToken(this); // 使用 util.getToken
         if (!token) {
+            this.AppError('getAdminInfo: getToken返回出错', appCode.ADMIN_ERROR);
             return null;
         }
 
@@ -71,11 +72,13 @@ class BaseAdminService extends BaseService {
         }
         let admin = await AdminModel.getOne(where);
         if (!admin) {
+            this.AppError('getAdminInfo: 查询admin状态错误', appCode.ADMIN_ERROR);
             return null;
         }
 
         // 判断token是否过期
         if (admin.ADMIN_TOKEN_TIME < timeUtil.time() - config.ADMIN_TOKEN_EXPIRE) {
+            this.AppError('getAdminInfo: token过期', appCode.ADMIN_ERROR);
             return null;
         }
 
