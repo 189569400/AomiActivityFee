@@ -200,10 +200,42 @@ class AdminMgrService extends BaseProjectAdminService {
 	}
 
 	/** 修改自身密码 */
-	async pwdtMgr(adminId, oldPassword, password) {
-
-		this.AppError('[报名缴费]该功能暂不开放，如有需要请加作者微信：cclinux0730');
-	}
+	async pwdtMgr(adminId, oldPwd, NewPwd) {
+        //this.AppError('[报名缴费]该功能暂不开放，如有需要请加作者微信：cclinux0730');
+        // 数据校验
+        if (!adminId) 
+            this.AppError('管理员id不能为空');
+        if (!oldPwd || !NewPwd) 
+            this.AppError('密码不能为空');
+        if (newPwd.length < 6) 
+            this.AppError('新密码不能少于6位');
+        // 查询管理员信息
+        let where = {
+            _id: adminId,
+            ADMIN_STATUS: 1
+        }
+        let admin = await AdminModel.getOne(where);
+        if (!admin)
+            this.AppError('管理员不存在');
+        // 校验旧密码
+        let oldPwdMD5 = md5Lib.md5(oldPwd);
+        if (admin.ADMIN_PWD != oldPwdMD5)
+            this.AppError('旧密码错误');
+        // 更新密码
+        let data = {
+            ADMIN_PWD: md5Lib.md5(newPwd),
+            ADMIN_EDIT_TIME: timeUtil.time(),
+            ADMIN_EDIT_IP: this.getIP()
+        };
+        try {
+            await AdminModel.edit(where, data);
+            return {
+                result: 'ok'
+            }
+        } catch(err) {
+            this.AppError('密码修改失败，请重试');
+        }
+    }
 }
 
 module.exports = AdminMgrService;

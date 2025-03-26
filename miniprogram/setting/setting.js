@@ -1,10 +1,10 @@
 ﻿module.exports = {
 	//### 环境相关 
-	CLOUD_ID: 'cloud1-3go08kosfd9d453c', //云服务id ,本地测试环境 
+	CLOUD_ID: 'cloud1-4godzpkja8a118f6', //云服务id ,本地测试环境 
 
 	// #### 版本信息 
-	VER: 'build 2023.10.01',
-	COMPANY: '联系作者',
+	VER: 'build 2025.03.25',
+	COMPANY: 'AomiLabs',
 
 	// #### 系统参数 
 	IS_SUB: false, //分包模式 

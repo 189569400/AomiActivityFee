@@ -1,7 +1,10 @@
+// 管理员token过期时间 (秒)
+const ADMIN_TOKEN_EXPIRE = 3600 * 2; // 2小时
+
 module.exports = {
 
 	//### 环境相关 
-	CLOUD_ID: 'cloud1-3go08kosfd9d453c', //你的云环境id   
+	CLOUD_ID: 'cloud1-4godzpkja8a118f6', //你的云环境id   
 
 	// ##################################################################   
 	COLLECTION_PRFIX: 'bx_',
@@ -25,5 +28,7 @@ module.exports = {
 	ADMIN_LOGIN_EXPIRE: 86400, //管理员token过期时间 (秒) 
 
 	// ### 服务者相关
-	WORK_LOGIN_EXPIRE: 86400, //服务者token过期时间 (秒) 
+    WORK_LOGIN_EXPIRE: 86400, //服务者token过期时间 (秒) 
+    
+    ADMIN_TOKEN_EXPIRE
 }

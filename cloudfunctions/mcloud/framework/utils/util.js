@@ -41,13 +41,15 @@ function sleep(time) {
 	return new Promise((resolve) => setTimeout(resolve, time));
 };
 
-
-
+function getToken(that) {
+    if (!that) return '';
+    return that.request.header.token || '';
+}
 
 module.exports = {
 	getProjectId,
 	isDefined, //判断变量，参数，对象属性是否定义  
 	sleep,
 	isObjectNull,
-
+    getToken
 }

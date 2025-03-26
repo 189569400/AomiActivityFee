@@ -54,7 +54,7 @@
 		"backgroundColor": "#f1f1f1",
 		"backgroundTextStyle": "dark",
 		"navigationBarBackgroundColor": "#0820a8",
-		"navigationBarTitleText": "活动报名缴费小程序",
+		"navigationBarTitleText": "奥米智慧小圈子",
 		"navigationBarTextStyle": "white"
 	},
 	"tabBar": {
