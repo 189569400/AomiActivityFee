@@ -60,7 +60,7 @@ class BaseAdminService extends BaseService {
     }
 
     async getAdminInfo() {
-        let token = this.getToken();
+        let token = util.getToken(this); // 使用 util.getToken
         if (!token) {
             return null;
         }
@@ -80,15 +80,6 @@ class BaseAdminService extends BaseService {
         }
 
         return admin;
-    }
-
-    getToken() {
-        let token = this._token;
-        if (!token) {
-            token = util.getToken();
-            this._token = token;
-        }
-        return token;
     }
  
 	/** 写入日志 */
